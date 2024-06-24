@@ -114,3 +114,72 @@ print(space_seriously)
 
 #now let's make an f-string to not be confused with a fing string
 
+anumber = 42 #create int
+asentence = f"There are {anumber} flying potatoes here?!" #create str with a place holder for the int
+print(asentence)
+anothersentence = f"There are {anumber:.5f} flying coffee grinders too!" #add decimal points to be displayed
+print(anothersentence)
+
+#now to add a few fun modifiers
+text = "This is going to be a \"test\" to see if I can get all \n of the magical things to \t work \t or \n not?"
+# \" allows to use quotes inside others, \n makes a new line, \t adds a tabulation
+print(text)
+
+#now, I might not do all of the string methods, though there are certainly a lot... So i copy pasted the lot of them and will use them
+testtext = """  this IS going to be a test text that I can use for all of the various str reading methods
+ I hope that it will look and work properly.
+ Let's now see {} if i did a good job or not.
+ I do need a    tab."""
+q = "vHts" #creates q, r, s as strings
+r = "iaeo"
+s = "lmn"
+print(testtext.capitalize()) #Converts the first character to upper case
+print(testtext.casefold())	#Converts string into lower case
+print(testtext.center(25))	#Returns a centered string
+print(testtext.count("I"))	#Returns the number of times a specified value occurs in a string
+print(testtext.encode())	#Returns an encoded version of the string
+print(testtext.endswith("."))	#Returns true if the string ends with the specified value
+print(testtext.expandtabs(3))	#Sets the tab size of the string
+print(testtext.find("look"))	#Searches the string for a specified value and returns the position of where it was found
+print(testtext.format(42))	#Formats specified values in a string
+#print(testtext.format_map())	#Formats specified values in a string don't know how it works
+print(testtext.index("did"))	#Searches the string for a specified value and returns the position of where it was found
+print(testtext.isalnum())	#Returns True if all characters in the string are alphanumeric
+print(testtext.isalpha())	#Returns True if all characters in the string are in the alphabet
+print(testtext.isascii())	#Returns True if all characters in the string are ascii characters
+print(testtext.isdecimal())	#Returns True if all characters in the string are decimals
+print(testtext.isdigit())	#Returns True if all characters in the string are digits
+print(testtext.isidentifier())	#Returns True if the string is an identifier
+print(testtext.islower())	#Returns True if all characters in the string are lower case
+print(testtext.isnumeric())	#Returns True if all characters in the string are numeric
+print(testtext.isprintable())	#Returns True if all characters in the string are printable
+print(testtext.isspace())	#Returns True if all characters in the string are whitespaces
+print(testtext.istitle()) 	#Returns True if the string follows the rules of a title
+print(testtext.isupper())	#Returns True if all characters in the string are upper case
+ineedatuple = ("Paul", "Atreidies", "Mu'hadib")
+iwantaseperator = " - "
+print(iwantaseperator.join(ineedatuple)) #Joins the elements of an iterable to the end of the string
+print(testtext.ljust(2))	#Returns a left justified version of the string
+print(testtext.lower())	#Converts a string into lower case
+print(testtext.lstrip())	#Returns a left trim version of the string
+print(testtext.maketrans(q, r, s))	#Returns a translation table to be used in translations
+print(testtext.partition("if"))	#Returns a tuple where the string is parted into three parts
+print(testtext.replace("e", "a"))	#Returns a string where a specified value is replaced with a specified value
+print(testtext.rfind("o"))	#Searches the string for a specified value and returns the last position of where it was found
+print(testtext.rindex("a"))	#Searches the string for a specified value and returns the last position of where it was found
+print(testtext.rjust(5))	#Returns a right justified version of the string
+print(testtext.rpartition("if"))	#Returns a tuple where the string is parted into three parts
+print(testtext.rsplit("look"))	#Splits the string at the specified separator, and returns a list
+print(testtext.rstrip())	#Returns a right trim version of the string
+print(testtext.split("all"))	#Splits the string at the specified separator, and returns a list
+print(testtext.splitlines())	#Splits the string at line breaks and returns a list
+print(testtext.startswith("hello"))	#Returns true if the string starts with the specified value
+print(testtext.strip())	#Returns a trimmed version of the string
+print(testtext.swapcase())	#Swaps cases, lower case becomes upper case and vice versa
+print(testtext.title())	#Converts the first character of each word to upper case
+ineedadict = {47: 58}
+print(testtext.translate(ineedadict))	#Returns a translated string using a quick changer as created above
+iwantatable = str.maketrans(q, r, s) #makes a translation table with the values from q, r, and s
+print(testtext.translate(iwantatable)) #returns a translated version using the table created
+print(testtext.upper())	#Converts a string into upper case
+print(testtext.zfill(5))	#Fills the string with a specified number of 0 values at the beginning
