@@ -48,3 +48,69 @@ print(nomnom)
 print(nomaray)
 print(brain)
 #well that's going to be a lot to remember though it's certainly cool to use them all.
+
+#it's time to practice with number and changes
+x = 7 #an int
+y = 42.5 #a float
+z = 3j #a complex
+a = float(x)
+b = int(y)
+c = complex(x)
+print(a)
+print(type(a))
+print(b)
+print(type(b))
+print(c)
+print(type(c))
+
+#now going to play with randoms, it's time to build a d20
+import random #bring in the library to create randos
+print(random.randrange(1, 20)) #creates a D20
+
+#time to play with new strings
+dumb_quote = """Hello world is a beautiful thing
+it creates a base for all to start from
+now to see where it will bring
+our beautiful project. To prom?""" #this makes a nice long quote
+print(dumb_quote)
+
+#so apparently, strings are arrays and thus i can play with that
+print(dumb_quote[4]) #should give the fifth letter of the string
+
+for letter in "platypus": #run through the string and print the letters
+ print(letter)
+
+print(len(dumb_quote)) #gives the string length 
+
+print("beautiful" in dumb_quote) #looks for the word in the string and say if it's there
+print("potato" not in dumb_quote) #looks if not in the string and print t/f
+
+if "beautiful" in dumb_quote:
+ print("Yes, 'beautiful' is in that quote") #same thing with an if clause
+
+if "potato" not in dumb_quote:
+ print("correct, there is no potato in there")
+
+#now it's time to slice this up
+print(dumb_quote[12:16]) #prints position 13 to 17 in the string
+print(dumb_quote[:5]) #prints from start to position 6 in the string
+print(dumb_quote[118:]) #prints from position 121 to end of string
+print(dumb_quote[-17:-10]) #starts the print from the back of the string
+
+#let's edit those strings
+print(dumb_quote.upper()) #print the string made fully caped
+print(dumb_quote.lower()) #print the string as lowercase only
+print(dumb_quote.strip()) #print the string with no spaces before or after (there were none anyway heck)
+print(dumb_quote.replace("o", "e"))
+print(dumb_quote.split("thing")) #splits the string at 'thing'
+
+#now we need new strings to play with
+waou = "flying"
+heck = "potato"
+seriously = waou + heck #add the two together into a new string
+print(seriously)
+space_seriously = waou + " " + heck #add a space in there
+print(space_seriously)
+
+#now let's make an f-string to not be confused with a fing string
+
