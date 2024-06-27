@@ -23,4 +23,15 @@ while j < len(myList):
     print(myList[j])
     j = j + 1
 
-[print(x) for x in myList]
+[print(x) for x in myList] #also prints the full context of the list
+myList = ["a word", "245", "25.452", "another word", "178.987", "True"]
+newList = []
+for xz in myList:
+    if "2" in xz:
+        newList.append(xz)
+# this only works if the list only contains iterables (aka strings or tuples and such)
+print(newList)
+
+newList2 = [x for x in myList if "a" in x] #same function as before though in a single line
+print(newList2)
+
