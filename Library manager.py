@@ -39,7 +39,7 @@ def get_book_details_google_books(isbn):
 # Function to create custom reference ID
 def create_reference_id(authors, year):
     if authors:
-        author = authors[0]['name'] if isinstance(authors[0], dict) else authors[0]
+        author = authors[0] if isinstance(authors[0], str) else authors[0]['name']
         last_name, first_name = author.split(' ')[-1], author.split(' ')[0]
         reference_id = f"{last_name[:3].lower()}-{first_name[:3].lower()}-{year[-4:]}"  # Use last 4 digits of year
         return reference_id
@@ -61,7 +61,7 @@ def update_excel(isbn, title, authors, year, reference_id):
         sheet.append(['ISBN', 'Book Title', 'Author(s)', 'Year', 'Reference ID'])
 
     # Join author names into a single string
-    authors_string = ', '.join(author['name'] for author in authors) if authors else 'N/A'
+    authors_string = ', '.join(author['name'] if isinstance(author, dict) else author for author in authors) if authors else 'N/A'
 
     if isbn not in existing_entries:
         sheet.append([isbn, title, authors_string, year, reference_id])
