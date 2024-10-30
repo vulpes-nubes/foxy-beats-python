@@ -73,9 +73,9 @@ def update_excel(isbn, title, authors, year, reference_id):
     if isbn not in existing_entries:
         sheet.append([isbn, title, authors_string, year, reference_id])
         wb.save(file_name)
-        return True
+        return True, authors_string  # Return authors_string for success message
     else:
-        return False
+        return False, authors_string
 
 # Function to handle ISBN input
 def on_submit(event=None):  # Allow event parameter for Enter key
@@ -97,7 +97,10 @@ def on_submit(event=None):  # Allow event parameter for Enter key
         # Create custom reference ID
         reference_id = create_reference_id(authors, year)
         
-        if update_excel(isbn, title, authors, year, reference_id):
+        # Update the Excel file and get authors_string for message
+        success, authors_string = update_excel(isbn, title, authors, year, reference_id)
+        
+        if success:
             messagebox.showinfo("Success", f"Added:\nISBN: {isbn}\nTitle: {title}\nAuthors: {authors_string}\nYear: {year}\nReference ID: {reference_id}")
         else:
             messagebox.showwarning("Duplicate", "This book is already in the list.")
