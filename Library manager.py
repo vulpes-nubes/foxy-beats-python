@@ -15,14 +15,14 @@ def get_book_details(isbn):
         title = book_data.get('title', 'N/A')
         authors = ', '.join(author['name'] for author in book_data.get('authors', []))
         year = book_data.get('publish_date', 'N/A')
-        dewey = book_data.get('dewey_decimal_class', ['N/A'])[0]  # Only taking the first entry
+        open_library_id = book_data.get('key', 'N/A').split('/')[-1]  # Extract Open Library ID from the URL
         
-        return title, authors, year, dewey
+        return title, authors, year, open_library_id
     else:
         return None
 
 # Function to append or create Excel file
-def update_excel(isbn, title, authors, year, dewey):
+def update_excel(isbn, title, authors, year, open_library_id):
     file_name = 'books.xlsx'
     existing_entries = set()
 
@@ -34,10 +34,10 @@ def update_excel(isbn, title, authors, year, dewey):
     except FileNotFoundError:
         wb = Workbook()
         sheet = wb.active
-        sheet.append(['ISBN', 'Book Title', 'Author(s)', 'Year', 'Dewey Decimal'])
+        sheet.append(['ISBN', 'Book Title', 'Author(s)', 'Year', 'Open Library ID'])
 
     if isbn not in existing_entries:
-        sheet.append([isbn, title, authors, year, dewey])
+        sheet.append([isbn, title, authors, year, open_library_id])
         wb.save(file_name)
         return True
     else:
@@ -49,9 +49,9 @@ def on_submit(event=None):  # Allow event parameter for Enter key
     if isbn:
         book_details = get_book_details(isbn)
         if book_details:
-            title, authors, year, dewey = book_details
-            if update_excel(isbn, title, authors, year, dewey):
-                messagebox.showinfo("Success", f"Added:\nISBN: {isbn}\nTitle: {title}\nAuthors: {authors}\nYear: {year}\nDewey: {dewey}")
+            title, authors, year, open_library_id = book_details
+            if update_excel(isbn, title, authors, year, open_library_id):
+                messagebox.showinfo("Success", f"Added:\nISBN: {isbn}\nTitle: {title}\nAuthors: {authors}\nYear: {year}\nOpen Library ID: {open_library_id}")
             else:
                 messagebox.showwarning("Duplicate", "This book is already in the list.")
         else:
