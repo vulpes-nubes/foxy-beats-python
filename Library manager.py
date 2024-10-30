@@ -109,3 +109,39 @@ submit_button = tk.Button(root, text="Submit", command=on_submit)
 submit_button.pack(pady=10)
 
 root.mainloop()
+
+
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+  File "<ipython-input-1-c42cbadec257>", line 90, in on_submit
+    if update_excel(isbn, title, authors, year, reference_id):
+  File "<ipython-input-1-c42cbadec257>", line 64, in update_excel
+    sheet.append([isbn, title, authors, year, reference_id])
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/worksheet/worksheet.py", line 673, in append
+    cell = Cell(self, row=row_idx, column=col_idx, value=content)
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 119, in __init__
+    self.value = value
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 218, in value
+    self._bind_value(value)
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 187, in _bind_value
+    raise ValueError("Cannot convert {0!r} to Excel".format(value))
+ValueError: Cannot convert ['Merlin Gideon Gray'] to Excel
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/tkinter/__init__.py", line 1921, in __call__
+    return self.func(*args)
+  File "<ipython-input-1-c42cbadec257>", line 90, in on_submit
+    if update_excel(isbn, title, authors, year, reference_id):
+  File "<ipython-input-1-c42cbadec257>", line 64, in update_excel
+    sheet.append([isbn, title, authors, year, reference_id])
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/worksheet/worksheet.py", line 673, in append
+    cell = Cell(self, row=row_idx, column=col_idx, value=content)
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 119, in __init__
+    self.value = value
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 218, in value
+    self._bind_value(value)
+  File "/home/gray221/.local/lib/python3.10/site-packages/openpyxl/cell/cell.py", line 187, in _bind_value
+    raise ValueError("Cannot convert {0!r} to Excel".format(value))
+ValueError: Cannot convert [{'url': 'https://openlibrary.org/authors/OL118077A/George_Orwell', 'name': 'George Orwell'}] to Excel
