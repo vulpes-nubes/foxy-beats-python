@@ -37,7 +37,7 @@ def get_book_details_google_books(isbn):
         return None
 
 # Function to create custom reference ID
-def create_reference_id(authors, year):
+def create_reference_id(authors, title):
     if authors and isinstance(authors[0], dict) and 'name' in authors[0]:
         author_name = authors[0]['name']
     elif authors and isinstance(authors[0], str):
@@ -46,7 +46,8 @@ def create_reference_id(authors, year):
         return 'N/A'
 
     last_name, first_name = author_name.split()[-1], author_name.split()[0]
-    reference_id = f"{last_name[:3].lower()}-{first_name[:3].lower()}-{year[-4:]}"  # Use last 4 digits of year
+    title_part = title[:5].lower()  # Get first 5 letters of the title
+    reference_id = f"{last_name[:3].lower()}-{first_name[:3].lower()}-{title_part}"  # Use title part instead of year
     return reference_id
 
 # Function to append or create Excel file
@@ -94,8 +95,8 @@ def on_submit(event=None):  # Allow event parameter for Enter key
                 messagebox.showwarning("Error", "No book found for this ISBN.")
                 return
         
-        # Create custom reference ID
-        reference_id = create_reference_id(authors, year)
+        # Create custom reference ID using the title
+        reference_id = create_reference_id(authors, title)
         
         # Update the Excel file and get authors_string for message
         success, authors_string = update_excel(isbn, title, authors, year, reference_id)
